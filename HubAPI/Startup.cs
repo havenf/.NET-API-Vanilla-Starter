@@ -4,6 +4,7 @@ using Microsoft.OpenApi.Models;
 using MySqlConnector;
 using System.Data;
 
+
 namespace HubAPI
 {
     public class Startup
@@ -18,7 +19,8 @@ namespace HubAPI
         public void ConfigureServices(IServiceCollection services)
         {
             ConfigureCors(services);
-            //ConfigureAuth(services);
+            
+            services.AddHttpContextAccessor();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -26,8 +28,6 @@ namespace HubAPI
             });
             services.AddScoped<IDbConnection>(x => CreateDbConnection());
 
-            //services.AddScoped<AccountsRepository>();
-            //services.AddScoped<AccountService>();
             services.AddTransient<TestObjectRepository>();
             services.AddTransient<TestObjectService>();
         }
@@ -50,11 +50,6 @@ namespace HubAPI
         }
 
         
-        /*private void ConfigureAuth(IServiceCollection services)
-        {
-       
-        }*/
-       
 
 
 

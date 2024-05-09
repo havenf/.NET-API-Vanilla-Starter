@@ -1,5 +1,6 @@
 ﻿using HubAPI.Models;
 using HubAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HubAPI.Controllers
@@ -48,6 +49,7 @@ namespace HubAPI.Controllers
         {
             try
             {
+
                 return _tOS.RemoveTestObject(id);
             }
             catch (Exception e)
